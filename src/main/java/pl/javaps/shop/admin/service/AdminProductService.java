@@ -21,11 +21,15 @@ public class AdminProductService {
         return productRepository.findById(id).orElseThrow();
     }
 
-    public AdminProduct creteProduct(AdminProduct product){
+    public AdminProduct creteProduct(AdminProduct product) {
         return productRepository.save(product);
     }
 
     public AdminProduct updateProduct(AdminProduct product) {
         return productRepository.save(product);
+    }
+
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 }
