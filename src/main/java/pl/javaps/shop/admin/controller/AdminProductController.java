@@ -1,5 +1,6 @@
 package pl.javaps.shop.admin.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.javaps.shop.admin.controller.dto.AdminProductDto;
 import pl.javaps.shop.admin.model.AdminProduct;
 import pl.javaps.shop.admin.service.AdminProductService;
-
-import java.util.Locale;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,13 +27,13 @@ public class AdminProductController {
     }
 
     @PostMapping("/admin/products")
-    public AdminProduct creteProduct(@RequestBody AdminProductDto adminProductDto){
+    public AdminProduct creteProduct(@RequestBody @Valid AdminProductDto adminProductDto){
         return adminProductService.creteProduct(mapAdminProduct(adminProductDto, EMPTY_ID)
         );
     }
 
     @PutMapping("/admin/products/{id}")
-    public AdminProduct updateProduct(@RequestBody AdminProductDto adminProductDto, @PathVariable Long id){
+    public AdminProduct updateProduct(@RequestBody @Valid AdminProductDto adminProductDto, @PathVariable Long id){
         return adminProductService.updateProduct(mapAdminProduct(adminProductDto, id)
         );
     }
@@ -46,7 +45,7 @@ public class AdminProductController {
                 .description(adminProductDto.getDescription())
                 .category(adminProductDto.getCategory())
                 .price(adminProductDto.getPrice())
-                .currency(adminProductDto.getCurrency().toUpperCase(Locale.ROOT))
+                .currency(adminProductDto.getCurrency())
                 .build();
     }
 
