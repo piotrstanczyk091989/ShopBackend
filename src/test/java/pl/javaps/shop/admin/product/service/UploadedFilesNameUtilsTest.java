@@ -1,4 +1,4 @@
-package pl.javaps.shop.admin.service;
+package pl.javaps.shop.admin.product.service;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

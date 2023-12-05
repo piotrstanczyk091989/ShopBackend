@@ -1,4 +1,4 @@
-package pl.javaps.shop.admin.service;
+package pl.javaps.shop.admin.product.service;
 
 import com.github.slugify.Slugify;
 import org.apache.commons.io.FilenameUtils;

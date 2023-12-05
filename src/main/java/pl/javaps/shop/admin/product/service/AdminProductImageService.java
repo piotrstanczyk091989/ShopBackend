@@ -1,4 +1,4 @@
-package pl.javaps.shop.admin.service;
+package pl.javaps.shop.admin.product.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResourceLoader;
