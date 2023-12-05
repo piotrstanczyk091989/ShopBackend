@@ -20,6 +20,7 @@ public class AdminProductDto {
     @NotBlank
     @Length(min = 4)
     private String description;
+    private String fullDescription;
     @PositiveOrZero
     @NotNull
     private BigDecimal price;
