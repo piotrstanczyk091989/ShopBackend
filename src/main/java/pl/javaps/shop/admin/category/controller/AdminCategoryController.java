@@ -30,23 +30,23 @@ public class AdminCategoryController {
     @PostMapping
     public AdminCategory createCategory(@RequestBody AdminCategoryDto adminCategoryDto){
 
-        return adminCategoryService.createCategory(mapToAdmincategory(EMPTY_ID, adminCategoryDto));
+        return adminCategoryService.createCategory(mapToAdminCategory(EMPTY_ID, adminCategoryDto));
     }
 
     @PutMapping("/{id}")
     public AdminCategory updateCategory(@PathVariable Long id, @RequestBody AdminCategoryDto adminCategoryDto){
-        return adminCategoryService.updateCategory(mapToAdmincategory(id, adminCategoryDto));
+        return adminCategoryService.updateCategory(mapToAdminCategory(id, adminCategoryDto));
     }
 
 
     @DeleteMapping("/{id}")
-    public void deleteCategory(long id){
+    public void deleteCategory(@PathVariable Long id){
         adminCategoryService.deleteCategory(id);
     }
 
-    private AdminCategory mapToAdmincategory(Long id, AdminCategoryDto adminCategoryDto) {
+    private AdminCategory mapToAdminCategory(Long id, AdminCategoryDto adminCategoryDto) {
         return AdminCategory.builder()
-                .id(adminCategoryDto.getId())
+                .id(id)
                 .name(adminCategoryDto.getName())
                 .description(adminCategoryDto.getDescription())
                 .slug(slugifyCategoryName(adminCategoryDto.getSlug()))
