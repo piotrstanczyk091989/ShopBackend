@@ -1,10 +1,9 @@
-package pl.javaps.shop.product.model;
+package pl.javaps.shop.common.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.javaps.shop.review.model.Review;
 
 import java.math.BigDecimal;
 import java.util.List;

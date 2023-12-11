@@ -1,10 +1,10 @@
-package pl.javaps.shop.product.repository;
+package pl.javaps.shop.common.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.javaps.shop.product.model.Product;
+import pl.javaps.shop.common.model.Product;
 
 import java.util.Optional;
 

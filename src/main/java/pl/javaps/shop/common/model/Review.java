@@ -1,4 +1,4 @@
-package pl.javaps.shop.review.model;
+package pl.javaps.shop.common.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package pl.javaps.shop.product.controller.dto;
+package pl.javaps.shop.common.dto;
 
 import lombok.Builder;
 import lombok.Getter;

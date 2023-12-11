@@ -1,4 +1,4 @@
-package pl.javaps.shop.category.model;
+package pl.javaps.shop.common.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

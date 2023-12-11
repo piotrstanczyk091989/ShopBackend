@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.javaps.shop.category.model.Category;
-import pl.javaps.shop.category.model.CategoryProductsDto;
+import pl.javaps.shop.category.dto.CategoryProductsDto;
 import pl.javaps.shop.category.service.CategoryService;
+import pl.javaps.shop.common.model.Category;
 
 import java.util.List;
 
