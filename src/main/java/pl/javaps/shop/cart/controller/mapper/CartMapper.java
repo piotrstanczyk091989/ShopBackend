@@ -23,11 +23,11 @@ public class CartMapper {
 
     private static List<CartSummaryItemDto> mapCartItems(List<CartItem> items) {
         return items.stream()
-                .map(CartMapper::mapToCartItems)
+                .map(CartMapper::mapToCartItem)
                 .toList();
     }
 
-    private static CartSummaryItemDto mapToCartItems(CartItem cartItem) {
+    private static CartSummaryItemDto mapToCartItem(CartItem cartItem) {
         return CartSummaryItemDto.builder()
                 .id(cartItem.getId())
                 .quantity(cartItem.getQuantity())
@@ -60,6 +60,6 @@ public class CartMapper {
         return items.stream()
                 .map(CartMapper::calculateLineValue)
                 .reduce(BigDecimal::add)
-                .orElseThrow();
+                .orElse(BigDecimal.ZERO);
     }
 }
