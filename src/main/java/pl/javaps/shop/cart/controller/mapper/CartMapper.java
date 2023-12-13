@@ -3,8 +3,8 @@ package pl.javaps.shop.cart.controller.mapper;
 import pl.javaps.shop.cart.controller.dto.CartSummaryDto;
 import pl.javaps.shop.cart.controller.dto.CartSummaryItemDto;
 import pl.javaps.shop.cart.controller.dto.SummaryDto;
-import pl.javaps.shop.cart.model.Cart;
-import pl.javaps.shop.cart.model.CartItem;
+import pl.javaps.shop.common.model.Cart;
+import pl.javaps.shop.common.model.CartItem;
 import pl.javaps.shop.common.model.Product;
 import pl.javaps.shop.product.service.dto.ProductDto;
 
