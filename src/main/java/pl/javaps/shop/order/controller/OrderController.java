@@ -10,6 +10,7 @@ import pl.javaps.shop.order.model.dto.InitOrder;
 import pl.javaps.shop.order.model.dto.OrderDto;
 import pl.javaps.shop.order.model.dto.OrderSummary;
 import pl.javaps.shop.order.service.OrderService;
+import pl.javaps.shop.order.service.PaymentService;
 import pl.javaps.shop.order.service.ShipmentService;
 
 @RestController
@@ -19,6 +20,7 @@ public class OrderController {
 
     private final OrderService orderService;
     private final ShipmentService shipmentService;
+    private final PaymentService paymentService;
 
 
     @PostMapping
@@ -30,6 +32,7 @@ public class OrderController {
     public InitOrder initData(){
         return InitOrder.builder()
                 .shipment(shipmentService.getShipment())
+                .payment(paymentService.getPayments())
                 .build();
     }
 }
