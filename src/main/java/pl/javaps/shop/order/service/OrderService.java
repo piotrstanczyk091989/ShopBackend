@@ -1,8 +1,10 @@
 package pl.javaps.shop.order.service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.javaps.shop.common.mail.EmailClientService;
 import pl.javaps.shop.common.model.Cart;
 import pl.javaps.shop.common.model.CartItem;
 import pl.javaps.shop.common.repository.CartItemRepository;
@@ -21,10 +23,12 @@ import pl.javaps.shop.order.repository.ShipmentRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -33,6 +37,7 @@ public class OrderService {
     private final CartItemRepository cartItemRepository;
     private final ShipmentRepository shipmentRepository;
     private final PaymentRepository paymentRepository;
+    private final EmailClientService emailClientService;
 
 
     @Transactional
@@ -62,6 +67,8 @@ public class OrderService {
         //usunąć koszyk
         cartItemRepository.deleteByCartId(orderDto.getCartId());
         cartRepository.deleteByCartId(orderDto.getCartId());
+        log.info("Zamówienie złożone");
+        emailClientService.getInstance().send(order.getEmail(), "Twoje zamówienie zostało przyjęte", createEmailMessage(order));
         //zwrócić podsumowanie
         return OrderSummary.builder()
                 .id(newOrder.getId())
@@ -70,6 +77,16 @@ public class OrderService {
                 .grossValue(newOrder.getGrossValue())
                 .payment(payment)
                 .build();
+    }
+
+    private String createEmailMessage(Order order) {
+        return "Twoje zamówienie o id: " + order.getId() +
+                "\nData złożenia: " + order.getPlaceDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
+                "\nWartość: " + order.getGrossValue() + " PLN " +
+                "\n\n" +
+                "\nPłatność: " + order.getPayment().getName() +
+                (order.getPayment().getNote() != null ? "\n" + order.getPayment().getNote() : "") +
+                "\n\nDziękujemy za zakupy.";
     }
 
     private BigDecimal calculateGrossValue(List<CartItem> items, Shipment shipment) {
