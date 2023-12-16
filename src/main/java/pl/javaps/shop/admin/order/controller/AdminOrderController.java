@@ -43,10 +43,10 @@ public class AdminOrderController {
 
     @GetMapping("/initData")
     public AdminInitDataDto getInitData(){
-        return new AdminInitDataDto(createOrderstatusesMap());
+        return new AdminInitDataDto(createOrderStatusesMap());
     }
 
-    private Map<String, String> createOrderstatusesMap() {
+    private Map<String, String> createOrderStatusesMap() {
         HashMap<String,String> statuses = new HashMap<>();
         for (AdminOrderStatus value : AdminOrderStatus.values()) {
             statuses.put(value.name(), value.getValue());
