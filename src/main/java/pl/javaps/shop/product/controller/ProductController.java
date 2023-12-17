@@ -1,6 +1,5 @@
 package pl.javaps.shop.product.controller;
 
-import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.domain.Page;
@@ -16,6 +15,7 @@ import pl.javaps.shop.common.model.Product;
 import pl.javaps.shop.product.service.ProductService;
 import pl.javaps.shop.product.service.dto.ProductDto;
 
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController

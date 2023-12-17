@@ -1,6 +1,6 @@
 package pl.javaps.shop.category.controller;
 
-import jakarta.validation.constraints.Pattern;
+
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +13,7 @@ import pl.javaps.shop.category.dto.CategoryProductsDto;
 import pl.javaps.shop.category.service.CategoryService;
 import pl.javaps.shop.common.model.Category;
 
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController

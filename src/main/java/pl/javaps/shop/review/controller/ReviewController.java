@@ -1,6 +1,5 @@
 package pl.javaps.shop.review.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.javaps.shop.common.model.Review;
 import pl.javaps.shop.review.controller.dto.ReviewDto;
 import pl.javaps.shop.review.service.ReviewService;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/reviews")
