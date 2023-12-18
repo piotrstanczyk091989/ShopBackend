@@ -9,10 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
+import pl.javaps.shop.security.model.UserRole;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -29,7 +27,7 @@ public class SecurityConfig {
                                            AuthenticationManager authenticationManager,
                                            UserDetailsService userDetailsService) throws Exception {
         http.authorizeRequests(authorize -> authorize
-                .antMatchers("/admin/**").authenticated()
+                .antMatchers("/admin/**").hasRole(UserRole.ROLE_ADMIN.getRole())
                 .anyRequest().permitAll()
         );
         http.csrf().disable();
@@ -44,14 +42,4 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource){
-//        UserDetails admin = User.withDefaultPasswordEncoder()
-//                .username("admin")
-//                .password("test")
-//                .roles("ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(admin);
-        return new JdbcUserDetailsManager(dataSource);
-    }
 }
