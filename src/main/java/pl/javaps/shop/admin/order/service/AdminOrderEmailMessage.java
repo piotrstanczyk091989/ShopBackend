@@ -1,9 +1,10 @@
 package pl.javaps.shop.admin.order.service;
 
-import pl.javaps.shop.admin.order.model.AdminOrderStatus;
+
+import pl.javaps.shop.common.model.OrderStatus;
 
 public class AdminOrderEmailMessage {
-    public static String createProcessingEmailMessage(Long id, AdminOrderStatus newStatus) {
+    public static String createProcessingEmailMessage(Long id, OrderStatus newStatus) {
         return "Twoje zamówienie: " + id + " jest przetwarzane." +
                 "\nStatus został zmieniony na: " + newStatus.getValue() +
                 "\nTwoje zamówienie jest przetwarzane przez naszych prcowników" +
@@ -12,14 +13,14 @@ public class AdminOrderEmailMessage {
                 "\n Sklep Shop";
     }
 
-    public static String createCompletedEmailMessage(Long id, AdminOrderStatus newStatus) {
+    public static String createCompletedEmailMessage(Long id, OrderStatus newStatus) {
         return "Twoje zamówienie: " + id + " zostało zrealizowane." +
                 "\nStatus twojego zamówienia został zmieniony na: " + newStatus.getValue() +
                 "\n\n Dziekujemuy za zakupy i zapraszamy ponownie" +
                 "\n Sklep Shop";
     }
 
-    public static String createRefundEmailMessage(Long id, AdminOrderStatus newStatus) {
+    public static String createRefundEmailMessage(Long id, OrderStatus newStatus) {
         return "Twoje zamówienie: " + id + " zostało zwrócone." +
                 "\nStatus twojego zamówienia został zmieniony na: " + newStatus.getValue() +
                 "\n\n Pozdrawiamy" +

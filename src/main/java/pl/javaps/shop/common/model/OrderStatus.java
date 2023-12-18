@@ -1,6 +1,6 @@
-package pl.javaps.shop.admin.order.model;
+package pl.javaps.shop.common.model;
 
-public enum AdminOrderStatus {
+public enum OrderStatus {
     NEW("Nowy"),
     PAID("Opłacony"),
     PROCESSING("Przetwarzany"),
@@ -11,7 +11,7 @@ public enum AdminOrderStatus {
 
     private String value;
 
-    AdminOrderStatus(String value) {
+    OrderStatus(String value) {
         this.value = value;
     }
 

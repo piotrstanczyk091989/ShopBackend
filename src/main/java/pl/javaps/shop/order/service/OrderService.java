@@ -12,12 +12,16 @@ import pl.javaps.shop.order.model.Order;
 import pl.javaps.shop.order.model.Payment;
 import pl.javaps.shop.order.model.Shipment;
 import pl.javaps.shop.order.model.dto.OrderDto;
+import pl.javaps.shop.order.model.dto.OrderListDto;
 import pl.javaps.shop.order.model.dto.OrderSummary;
 import pl.javaps.shop.order.repository.OrderRepository;
 import pl.javaps.shop.order.repository.OrderRowRepository;
 import pl.javaps.shop.order.repository.PaymentRepository;
 import pl.javaps.shop.order.repository.ShipmentRepository;
 
+import java.util.List;
+
+import static pl.javaps.shop.order.service.mapper.OrderDtoMapper.mapToOrderListDto;
 import static pl.javaps.shop.order.service.mapper.OrderEmailMessageMapper.createEmailMessage;
 import static pl.javaps.shop.order.service.mapper.OrderMapper.createNewOrder;
 import static pl.javaps.shop.order.service.mapper.OrderMapper.createOrderSummary;
@@ -76,4 +80,9 @@ public class OrderService {
                 .peek(orderRowRepository::save)
                 .toList();
     }
+
+    public List<OrderListDto> getOrdersFromCustomer(Long userId) {
+        return mapToOrderListDto(orderRepository.findByUserId(userId));
+    }
+
 }

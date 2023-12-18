@@ -2,9 +2,9 @@ package pl.javaps.shop.order.service.mapper;
 
 import pl.javaps.shop.common.model.Cart;
 import pl.javaps.shop.common.model.CartItem;
+import pl.javaps.shop.common.model.OrderStatus;
 import pl.javaps.shop.order.model.Order;
 import pl.javaps.shop.order.model.OrderRow;
-import pl.javaps.shop.order.model.OrderStatus;
 import pl.javaps.shop.order.model.Payment;
 import pl.javaps.shop.order.model.Shipment;
 import pl.javaps.shop.order.model.dto.OrderDto;

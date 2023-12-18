@@ -3,9 +3,9 @@ package pl.javaps.shop.admin.order.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.javaps.shop.admin.order.model.AdminOrder;
-import pl.javaps.shop.admin.order.model.AdminOrderStatus;
 import pl.javaps.shop.admin.order.model.dto.AdminOrderStats;
 import pl.javaps.shop.admin.order.repository.AdminOrderRepository;
+import pl.javaps.shop.common.model.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -28,7 +28,7 @@ public class AdminOrderStatsService {
         List<AdminOrder> orders = orderRepository.findAllByPlaceDateIsBetweenAndOrderStatus(
                 from,
                 to,
-                AdminOrderStatus.COMPLETED
+                OrderStatus.COMPLETED
         );
 
         //key => new Object(sales, orders)
